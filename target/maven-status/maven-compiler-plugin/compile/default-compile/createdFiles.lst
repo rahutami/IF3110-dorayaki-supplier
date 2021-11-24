@@ -1,0 +1,15 @@
+com/dorayakisupplier/model/StatusRequest.class
+com/dorayakisupplier/DorayakiSupplier.class
+com/dorayakisupplier/package-info.class
+com/dorayakisupplier/response/VariantListResponse.class
+com/dorayakisupplier/model/DorayakiData.class
+com/dorayakisupplier/ObjectFactory.class
+com/dorayakisupplier/response/StatusRequestResponse.class
+com/dorayakisupplier/request/GetListVariant.class
+com/dorayakisupplier/request/RequestDorayaki.class
+com/dorayakisupplier/model/StatusRequestList.class
+com/dorayakisupplier/response/RequestDorayakiResponse.class
+com/dorayakisupplier/model/Variant.class
+com/dorayakisupplier/DorayakiSupplierService.class
+com/dorayakisupplier/model/VariantList.class
+com/dorayakisupplier/request/GetStatusRequest.class
