@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://topdown.server.jaxws.baeldung.com/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="http://topdown.server.jaxws.baeldung.com/"
+        name="DorayakiSupplier">
+    <types>
+        <xsd:schema
+                targetNamespace="http://topdown.server.jaxws.baeldung.com/">
+<!--            Info yang dibutuhkan untuk request dorayaki-->
+            <xsd:element name="requestDorayaki">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="idDorayaki" type="xsd:int"/>
+                        <xsd:element name="namaDorayaki" type="xsd:string"/>
+                        <xsd:element name="jumlah" type="xsd:int"/>
+                        <xsd:element name="requestTime" type="xsd:dateTime"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+<!--            -->
+            <!--            Info yang dibutuhkan untuk response requestDorayaki-->
+            <xsd:complexType name="dorayakiData">
+                <xsd:sequence>
+                    <xsd:element name="idDorayaki" type="xsd:int"/>
+                    <xsd:element name="namaDorayaki" type="xsd:string"/>
+                    <xsd:element name="jumlah" type="xsd:int"/>
+                    <xsd:element name="requestTime" type="xsd:dateTime"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:element name="requestDorayakiResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" type="tns:dorayakiData"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+<!--            Info untuk request status -->
+            <xsd:element name="getStatusRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="requestTime" type="xsd:dateTime"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+<!--            tuple status request -->
+            <xsd:complexType name="statusRequest">
+                <xsd:sequence>
+                    <xsd:element name="idDorayaki" type="xsd:int"/>
+                    <xsd:element name="namaDorayaki" type="xsd:string" />
+                    <xsd:element name="jumlah" type="xsd:int" />
+                    <xsd:element name="requestTime" type="xsd:dateTime" />
+                    <xsd:element name="status" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+
+<!--            list status request -->
+            <xsd:complexType name="statusRequestList">
+                <xsd:sequence>
+                    <xsd:element name="listStatus" maxOccurs="unbounded" minOccurs="0" nillable="true" type="tns:statusRequest" />
+                </xsd:sequence>
+            </xsd:complexType>
+
+<!--            response buat get status request-->
+            <xsd:element name="statusRequestResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" type="tns:statusRequestList"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+<!--            Request daftar variant-->
+            <xsd:element name="getListVariant">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="requestTime" type="xsd:dateTime"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="variant">
+                <xsd:sequence>
+                    <xsd:element name="idDorayaki" type="xsd:int"/>
+                    <xsd:element name="namaDorayaki" type="xsd:string"/>
+                    <xsd:element name="deskripsi" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="variantList">
+                <xsd:sequence>
+                    <xsd:element name="variants" maxOccurs="unbounded" minOccurs="0" nillable="true" type="tns:variant" />
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:element name="variantListResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" type="tns:variantList"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="requestDorayaki">
+        <part name="parameters" element="tns:requestDorayaki"/>
+    </message>
+    <message name="requestDorayakiResponse">
+        <part name="parameters" element="tns:requestDorayakiResponse"/>
+    </message>
+
+    <message name="getStatusRequest">
+        <part name="parameters" element="tns:getStatusRequest"/>
+    </message>
+    <message name="statusRequestResponse">
+        <part name="parameters" element="tns:requestDorayakiResponse"/>
+    </message>
+
+    <message name="getListVariant">
+        <part name="parameters" element="tns:getListVariant"/>
+    </message>
+    <message name="variantListResponse">
+        <part name="parameters" element="tns:variantListResponse"/>
+    </message>
+
+    <portType name="DorayakiSupplier">
+        <operation name="requestDorayaki">
+            <input message="tns:requestDorayaki"/>
+            <output message="tns:requestDorayakiResponse"/>
+        </operation>
+        <operation name="getStatusRequest">
+            <input message="tns:getStatusRequest"/>
+            <output message="tns:statusRequestResponse"/>
+        </operation>
+        <operation name="getListVariant">
+            <input message="tns:getListVariant"/>
+            <output message="tns:variantListResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="DorayakiSupplierSOAP"
+             type="tns:DorayakiSupplier">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                      style="document"/>
+        <operation name="requestDorayaki">
+            <soap:operation
+                    soapAction="requestDorayaki"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getStatusRequest">
+            <soap:operation
+                    soapAction="getStatusRequest"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getListVariant">
+            <soap:operation
+                    soapAction="getListVariant"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="DorayakiSupplierService">
+        <port name="DorayakiSupplierSOAP"
+              binding="tns:DorayakiSupplierSOAP">
+            <soap:address
+                    location="http://localhost:8124/dorayakiservice"/>
+        </port>
+    </service>
+</definitions>
