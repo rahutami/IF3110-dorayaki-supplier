@@ -156,4 +156,14 @@ public class StatusRequest {
         this.status = value;
     }
 
+    @Override
+    public String toString() {
+        return "StatusRequest{" +
+                "idDorayaki=" + idDorayaki +
+                ", namaDorayaki='" + namaDorayaki + '\'' +
+                ", jumlah=" + jumlah +
+                ", requestTime=" + requestTime +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

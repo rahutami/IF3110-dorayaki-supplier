@@ -66,4 +66,10 @@ public class StatusRequestList {
         return this.listStatus;
     }
 
+    @Override
+    public String toString() {
+        return "StatusRequestList{" +
+                "listStatus=" + listStatus +
+                '}';
+    }
 }

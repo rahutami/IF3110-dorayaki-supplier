@@ -66,4 +66,10 @@ public class VariantList {
         return this.variants;
     }
 
+    @Override
+    public String toString() {
+        return "VariantList{" +
+                "variants=" + variants +
+                '}';
+    }
 }

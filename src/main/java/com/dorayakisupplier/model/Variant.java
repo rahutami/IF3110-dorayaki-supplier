@@ -106,4 +106,12 @@ public class Variant {
         this.deskripsi = value;
     }
 
+    @Override
+    public String toString() {
+        return "Variant{" +
+                "idDorayaki=" + idDorayaki +
+                ", namaDorayaki='" + namaDorayaki + '\'' +
+                ", deskripsi='" + deskripsi + '\'' +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ com/dorayakisupplier/ObjectFactory.class
 com/dorayakisupplier/response/StatusRequestResponse.class
 com/dorayakisupplier/request/GetListVariant.class
 com/dorayakisupplier/request/RequestDorayaki.class
+com/dorayakisupplier/DatabaseConnection.class
 com/dorayakisupplier/model/StatusRequestList.class
 com/dorayakisupplier/response/RequestDorayakiResponse.class
 com/dorayakisupplier/model/Variant.class

@@ -128,4 +128,13 @@ public class DorayakiData {
         this.requestTime = value;
     }
 
+    @Override
+    public String toString() {
+        return "DorayakiData{" +
+                "idDorayaki=" + idDorayaki +
+                ", namaDorayaki='" + namaDorayaki + '\'' +
+                ", jumlah=" + jumlah +
+                ", requestTime=" + requestTime +
+                '}';
+    }
 }

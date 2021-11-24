@@ -1,6 +1,7 @@
 
 package com.dorayakisupplier.request;
 
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -36,6 +37,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "getListVariant")
 public class GetListVariant {
 
+
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar requestTime;
@@ -63,5 +65,6 @@ public class GetListVariant {
     public void setRequestTime(XMLGregorianCalendar value) {
         this.requestTime = value;
     }
+
 
 }
