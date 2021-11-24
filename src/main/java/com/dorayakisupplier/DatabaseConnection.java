@@ -1,14 +1,11 @@
 package com.dorayakisupplier;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 //import com.dorayakisupplier.model.Variant;
 //import com.dorayakisupplier.model.VariantList;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +16,9 @@ public class DatabaseConnection {
     {
         String url = "jdbc:mysql://localhost:3306/pabriknew";
         String user = "root";
-        String pass = null;
+        String pass = "rahutami";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, pass);
         }
         catch (ClassNotFoundException | SQLException e) {
@@ -37,7 +34,14 @@ public class DatabaseConnection {
         String query = "SELECT * FROM dorayaki";
         PreparedStatement ps = conn.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
-//        List<Variant> ls = new ArrayList();
+
+        PreparedStatement ps1 = conn.prepareStatement("INSERT into log_request(ip, endpoint, timestamp) value(?, ?, ?)");
+        ps1.setString(1, "127.1.0.1");
+        ps1.setString(2, "test");
+        ps1.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+
+        int result = ps1.executeUpdate();
+        //        List<Variant> ls = new ArrayList();
 //
 //        while (rs.next()) {
 //            Variant var = new Variant();
