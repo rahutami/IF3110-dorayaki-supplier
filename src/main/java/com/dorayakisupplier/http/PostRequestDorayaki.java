@@ -26,11 +26,11 @@ public class PostRequestDorayaki {
 //        return resp;
     }
 
-    public static void main(String[] args) {
-        try{
-            (new PostRequestDorayaki()).createPost(1, 2);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+//    public static void main(String[] args) {
+//        try{
+//            (new PostRequestDorayaki()).createPost(1, 2);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
 }
