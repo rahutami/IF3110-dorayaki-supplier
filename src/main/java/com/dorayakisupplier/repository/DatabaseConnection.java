@@ -13,8 +13,8 @@ public class DatabaseConnection {
     static
     {
         String url = "jdbc:mysql://localhost:3306/pabriknew?useLegacyDatetimeCode=false&serverTimezone=UTC";
-        String user = "root";
-        String pass = "rahutami";
+        String user = "root"; // TODO ganti sesuai user
+        String pass = null; // TODO ganti sesuai password
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, pass);
