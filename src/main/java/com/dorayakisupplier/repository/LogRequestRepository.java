@@ -20,10 +20,12 @@ public class LogRequestRepository {
         return ps.executeUpdate();
     }
 
-    public int countLog() throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT count(*) AS rowcount from log_request where timestamp > ?");
+    public int countLog(String ipAddress, String endpoint) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT count(*) AS rowcount from log_request where timestamp > ? and ip = ? and endpoint = ?");
         LocalDateTime ldt = LocalDateTime.now();
         ps.setTimestamp(1, valueOf(ldt.minus(1, ChronoUnit.MINUTES)));
+        ps.setString(2, ipAddress);
+        ps.setString(3, endpoint);
         ResultSet rs = ps.executeQuery();
         rs.next();
         return rs.getInt("rowcount");

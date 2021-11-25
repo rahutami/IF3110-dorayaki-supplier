@@ -22,7 +22,7 @@ public class RequestDorayakiService {
     @WebMethod
     public String makeDorayakiRequest(int idDorayaki, int amount, String ipAddress){
         try{
-            if(logRequestRepository.countLog() > 10) return "too many requests";
+            if(logRequestRepository.countLog(ipAddress, "/request-dorayaki") > 10) return "too many requests";
 
             RequestDorayaki reqDorayaki = new RequestDorayaki(idDorayaki, amount, ipAddress);
             reqDorayaki.toString();
