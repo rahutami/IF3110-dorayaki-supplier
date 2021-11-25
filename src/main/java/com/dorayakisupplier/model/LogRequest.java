@@ -9,6 +9,12 @@ public class LogRequest {
     private Timestamp timestamp;
     private String endpoint;
 
+    public LogRequest(String ipAddress, Timestamp timestamp, String endpoint) {
+        this.ipAddress = ipAddress;
+        this.timestamp = timestamp;
+        this.endpoint = endpoint;
+    }
+
     public String getIpAddress() {
         return ipAddress;
     }

@@ -9,6 +9,6 @@ public class Publisher {
     public static void main(String[] args) throws SQLException {
         Endpoint.publish("http://localhost:8080/hello", new Hello());
         Endpoint.publish("http://localhost:8080/variant", new GetVariantService());
-
+        Endpoint.publish("http://localhost:8080/request-dorayaki", new RequestDorayakiService());
     }
 }
