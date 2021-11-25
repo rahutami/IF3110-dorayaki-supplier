@@ -12,10 +12,9 @@ public class LogRequestRepository {
     public static final Connection conn = DatabaseConnection.getConnection();
 
     public int insertLog(LogRequest logRequest) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("INSERT into log_request(ip, endpoint, timestamp) value(?, ?, ?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT into log_request(ip, endpoint) value(?, ?)");
         ps.setString(1, logRequest.getIpAddress());
         ps.setString(2, logRequest.getEndpoint());
-        ps.setTimestamp(3, logRequest.getTimestamp());
 
         return ps.executeUpdate();
     }

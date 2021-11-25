@@ -6,12 +6,10 @@ import java.time.LocalDateTime;
 
 public class LogRequest {
     private String ipAddress;
-    private Timestamp timestamp;
     private String endpoint;
 
-    public LogRequest(String ipAddress, Timestamp timestamp, String endpoint) {
+    public LogRequest(String ipAddress, String endpoint) {
         this.ipAddress = ipAddress;
-        this.timestamp = timestamp;
         this.endpoint = endpoint;
     }
 
@@ -21,14 +19,6 @@ public class LogRequest {
 
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
     }
 
     public String getEndpoint() {

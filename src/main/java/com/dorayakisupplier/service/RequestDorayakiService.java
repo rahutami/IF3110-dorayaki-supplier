@@ -1,5 +1,6 @@
 package com.dorayakisupplier.service;
 
+import com.dorayakisupplier.http.PostRequestDorayaki;
 import com.dorayakisupplier.model.LogRequest;
 import com.dorayakisupplier.model.RequestDorayaki;
 import com.dorayakisupplier.repository.LogRequestRepository;
@@ -23,12 +24,16 @@ public class RequestDorayakiService {
     public String makeDorayakiRequest(int idDorayaki, int amount, String ipAddress){
         try{
             if(logRequestRepository.countLog(ipAddress, "/request-dorayaki") > 10) return "too many requests";
-
+//            Insert log
             RequestDorayaki reqDorayaki = new RequestDorayaki(idDorayaki, amount, ipAddress);
-            reqDorayaki.toString();
-            int resultDorayaki = requestRepository.insertRequest(reqDorayaki);
-            int resultLog = logRequestRepository.insertLog(new LogRequest(reqDorayaki.getIpAddress(), Timestamp.valueOf(LocalDateTime.now()), "/request-dorayaki"));
-            if (resultDorayaki == 1 && resultLog == 1) return "success";
+            int resultLog = logRequestRepository.insertLog(new LogRequest(reqDorayaki.getIpAddress(), "/request-dorayaki"));
+
+//            Send post request
+            PostRequestDorayaki postRequestDorayaki = new PostRequestDorayaki();
+            int resultDorayaki = postRequestDorayaki.createPost(idDorayaki, amount);
+//            String resultDorayaki = "success";
+            System.out.println(resultDorayaki);
+            if (resultDorayaki == 200 && resultLog == 1) return "success";
             else return "error";
         } catch (Exception throwables) {
             throwables.printStackTrace();
