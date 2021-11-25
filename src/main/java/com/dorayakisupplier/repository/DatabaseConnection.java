@@ -1,4 +1,4 @@
-package com.dorayakisupplier;
+package com.dorayakisupplier.repository;
 
 import java.sql.*;
 
@@ -6,8 +6,6 @@ import java.sql.*;
 //import com.dorayakisupplier.model.VariantList;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseConnection {
     private static Connection conn = null;

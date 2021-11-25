@@ -1,10 +1,12 @@
 package com.dorayakisupplier.model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class LogRequest {
     private String ipAddress;
-    private LocalDateTime timestamp;
+    private Timestamp timestamp;
     private String endpoint;
 
     public String getIpAddress() {
@@ -15,11 +17,11 @@ public class LogRequest {
         this.ipAddress = ipAddress;
     }
 
-    public LocalDateTime getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 

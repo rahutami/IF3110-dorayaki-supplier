@@ -14,14 +14,12 @@ public class GetVariantService {
     private static final VariantRepository variantRepository = new VariantRepository();
 
     @WebMethod
-    public List<Variant> getAllVariant(){
+    public List<Variant> getAllVariant() {
         try {
             return variantRepository.getAllVariant();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
     }
-
 }
-

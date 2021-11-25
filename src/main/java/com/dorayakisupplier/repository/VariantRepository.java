@@ -1,6 +1,5 @@
 package com.dorayakisupplier.repository;
-
-import com.dorayakisupplier.DatabaseConnection;
+import com.dorayakisupplier.repository.DatabaseConnection;
 import com.dorayakisupplier.model.Variant;
 
 import java.sql.Connection;
@@ -26,6 +25,4 @@ public class VariantRepository {
         }
         return dorayakis;
     }
-
-
 }

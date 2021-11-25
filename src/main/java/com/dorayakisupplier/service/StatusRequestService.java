@@ -1,2 +1,4 @@
-package com.dorayakisupplier.service;public class StatusRequestService {
+package com.dorayakisupplier.service;
+
+public class StatusRequestService {
 }
