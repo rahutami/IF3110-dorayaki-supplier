@@ -10,5 +10,6 @@ public class Publisher {
         Endpoint.publish("http://localhost:8080/hello", new Hello());
         Endpoint.publish("http://localhost:8080/variant", new GetVariantService());
         Endpoint.publish("http://localhost:8080/request-dorayaki", new RequestDorayakiService());
+        Endpoint.publish("http://localhost:8080/status", new StatusRequestService());
     }
 }
