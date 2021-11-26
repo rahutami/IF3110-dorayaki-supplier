@@ -14,23 +14,24 @@ public class PostRequestDorayaki {
 
     public int createPost(int idDorayaki, int amount) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost("http://localhost:8000/requests");
+        HttpPost httpPost = new HttpPost("http://localhost:8000/supplier/request");
         httpPost.setEntity(new StringEntity("{\"idDorayaki\": " + idDorayaki + ", \"amount\": " + amount + "}"));
         httpPost.setHeader("Accept", "application/json");
         httpPost.setHeader("Content-type", "application/json");
         HttpResponse httpresponse = httpClient.execute(httpPost);
         Scanner sc = new Scanner(httpresponse.getEntity().getContent());
+        System.out.println(httpresponse.getEntity());
+        String resp = sc.nextLine();
+        System.out.println(resp);
         return httpresponse.getStatusLine().getStatusCode();
-//        String resp = sc.nextLine();
-//        System.out.println(resp);
 //        return resp;
     }
 
-//    public static void main(String[] args) {
-//        try{
-//            (new PostRequestDorayaki()).createPost(1, 2);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//    }
+    public static void main(String[] args) {
+        try{
+            (new PostRequestDorayaki()).createPost(1, 2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

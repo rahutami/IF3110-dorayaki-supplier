@@ -24,7 +24,7 @@ public class GetVariantService {
         // bingung masalah ipAddress
         try{
             if(logRequestRepository.countLog(ipAddress, "/variant") > 10) return new ArrayList<>();
-            int resultLog = logRequestRepository.insertLog(new LogRequest(ipAddress, Timestamp.valueOf(LocalDateTime.now()), "/variant"));
+            int resultLog = logRequestRepository.insertLog(new LogRequest(ipAddress, "/variant"));
             if (resultLog == 1) return variantRepository.getAllVariant();
             else return new ArrayList<>();
         } catch (Exception throwables) {
