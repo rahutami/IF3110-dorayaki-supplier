@@ -22,10 +22,10 @@ public class RequestRepository {
 
     public List<Request> getAllRequest() throws SQLException {
         List<Request> requestList = new ArrayList<>();
-        String sql = "SELECT * FROM request";
+        String sql = "SELECT request.id as id, dorayaki.nama as nama, request.id_dorayaki as id_dorayaki, request.jumlah as jumlah, request.status as status FROM request inner join dorayaki ON request.id_dorayaki = dorayaki.id ";
         ResultSet rs = this.conn.createStatement().executeQuery(sql);
         while (rs.next()){
-            Request request = new Request(rs.getInt("id_dorayaki"), rs.getInt("id"), rs.getInt("jumlah"), rs.getString("status"));
+            Request request = new Request(rs.getInt("id_dorayaki"), rs.getInt("id"), rs.getInt("jumlah"), rs.getString("status"), rs.getString("nama"));
             requestList.add(request);
         }
         return requestList;

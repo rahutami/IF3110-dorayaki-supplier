@@ -5,22 +5,15 @@ public class Request {
     private int idDorayaki;
     private int amount;
     private String status;
+    private String nama;
 
-    public Request(int idDorayaki, int id, int amount, String status) {
+    public Request(int idDorayaki, int id, int amount, String status, String nama) {
         this.idDorayaki = idDorayaki;
         this.id = id;
         this.amount = amount;
         this.status = status;
+        this.nama = nama;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getIdDorayaki() {
         return idDorayaki;
     }
@@ -29,19 +22,14 @@ public class Request {
         this.idDorayaki = idDorayaki;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id=" + id +
+                ", idDorayaki=" + idDorayaki +
+                ", amount=" + amount +
+                ", status='" + status + '\'' +
+                ", nama='" + nama + '\'' +
+                '}';
     }
 }
