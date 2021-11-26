@@ -22,7 +22,10 @@ public class LogRequestRepository {
     public int countLog(String ipAddress, String endpoint) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("SELECT count(*) AS rowcount from log_request where timestamp > ? and ip = ? and endpoint = ?");
         LocalDateTime ldt = LocalDateTime.now();
-        ps.setTimestamp(1, valueOf(ldt.minus(1, ChronoUnit.MINUTES)));
+        ldt = ldt.minus(1, ChronoUnit.MINUTES);
+
+        System.out.println(valueOf(ldt));
+        ps.setString(1, ldt.toString());
         ps.setString(2, ipAddress);
         ps.setString(3, endpoint);
         ResultSet rs = ps.executeQuery();
