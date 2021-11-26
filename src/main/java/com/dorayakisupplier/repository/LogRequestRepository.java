@@ -27,6 +27,7 @@ public class LogRequestRepository {
         ps.setString(3, endpoint);
         ResultSet rs = ps.executeQuery();
         rs.next();
+        System.out.println(rs.getInt("rowcount"));
         return rs.getInt("rowcount");
     }
 }

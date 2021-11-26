@@ -28,6 +28,10 @@ public class RequestRepository {
             Request request = new Request(rs.getInt("id_dorayaki"), rs.getInt("id"), rs.getInt("jumlah"), rs.getString("status"), rs.getString("nama"));
             requestList.add(request);
         }
+        for (Request request: requestList
+             ) {
+            System.out.println(request.toString());
+        }
         return requestList;
     }
 }
